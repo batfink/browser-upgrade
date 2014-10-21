@@ -20,6 +20,10 @@
     "request": "~2.45.0",
     "xml2js": "~0.4.4",
     "js-beautify": "~1.5.4",
-    "es6-promise": "~2.0.0"
+    "es6-promise": "~2.0.0",
+    "gulp-concat": "~2.4.1",
+    "require-dir": "~0.1.0",
+    "browser-sync": "~1.5.8",
+    "run-sequence": "~1.0.1"
   }
 }
