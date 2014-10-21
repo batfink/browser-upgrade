@@ -1,0 +1,25 @@
+{
+  "name": "reisetips",
+  "version": "0.0.1",
+  "description": "Dr. Front component for BA, based on Nettavisens Reisetips RSS feed.",
+  "main": "gulp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/amedia/reisetips"
+  },
+  "author": "Victor Nystad",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/amedia/reisetips/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.8",
+    "request": "~2.45.0",
+    "xml2js": "~0.4.4",
+    "js-beautify": "~1.5.4",
+    "es6-promise": "~2.0.0"
+  }
+}
