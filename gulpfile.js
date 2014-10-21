@@ -9,7 +9,7 @@ var Promise = require('es6-promise').Promise;
 
 gulp.task('get:feed', function () {
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function getFeed(resolve, reject) {
         request(feed, function(error, response, body) {
             if (!error && response.statusCode === 200) {
                 resolve(body)
