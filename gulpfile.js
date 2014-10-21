@@ -6,9 +6,7 @@ var parseString = require('xml2js').parseString;
 var beautify = require('js-beautify').js_beautify
 var Promise = require('es6-promise').Promise;
 
-
-gulp.task('get:feed', function () {
-
+function getFeed() {
     return new Promise(function getFeed(resolve, reject) {
         request(feed, function(error, response, body) {
             if (!error && response.statusCode === 200) {
@@ -18,55 +16,67 @@ gulp.task('get:feed', function () {
             }
         })
     })
-    .then(function saveXMLFile(data) {
-        return new Promise(function(resolve, reject) {
-            fs.writeFile('./feed/feed.xml', data, function (err) {
-                if (err) {
-                    reject(err)
-                } else {
-                    resolve(data)
-                }
-            });
+};
+
+function saveXML(data) {
+    return new Promise(function(resolve, reject) {
+        fs.writeFile('./feed/feed.xml', data, function (err) {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(data)
+            }
         });
-    })
-    .then(function convertToJSON(data) {
-        return new Promise(function(resolve, reject) {
-            parseString(data, function(err, result) {
-                if (err) {
-                    reject(err)
-                } else {
-                    resolve(result)
-                }
-            });
+    });
+};
+
+function convertToJSON(data) {
+    return new Promise(function(resolve, reject) {
+        parseString(data, function(err, result) {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(result)
+            }
         });
-    })
-    .then(function getArticles(data) {
+    });
+};
 
-        var articles = data.rss.channel[0].item.slice(0, 3);
+function get3LatestArticles(data) {
 
-        var arr = [];
+    var articles = data.rss.channel[0].item.slice(0, 3);
 
-        articles.forEach(function (article) {
-            arr.push({
-                title : article.title[0],
-                link : article.link[0],
-                img : article.enclosure[0].$.url
-            });
+    var arr = [];
+
+    articles.forEach(function (article) {
+        arr.push({
+            title : article.title[0],
+            link : article.link[0],
+            img : article.enclosure[0].$.url
         });
+    });
 
-        return arr;
+    return arr;
 
-    })
-    .then(function saveToDisk(data) {
-        return new Promise(function(reject, resolve) {
-            fs.writeFile('./feed/articles.json', beautify(JSON.stringify(data), { indent_size: 4 }), function (err) {
-                if (err) {
-                    reject(err)
-                } else {
-                    resolve('done')
-                }
-            });
+};
+
+function saveJSON(data) {
+    return new Promise(function(reject, resolve) {
+        fs.writeFile('./feed/articles.json', beautify(JSON.stringify(data), { indent_size: 4 }), function (err) {
+            if (err) {
+                reject(err)
+            } else {
+                resolve('done')
+            }
         });
-    })
-    .then(console.log.bind(console));
+    });
+};
+
+gulp.task('get:feed', function () {
+    getFeed()
+        .then(saveXML)
+        .then(convertToJSON)
+        .then(get3LatestArticles)
+        .then(saveJSON)
+        .then(console.log.bind(console));
 });
