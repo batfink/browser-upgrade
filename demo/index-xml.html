@@ -9,22 +9,17 @@
 </head>
 <body>
 
-    <div class="am-ad--travel-tips">
-        <h1 class="df-style-maintitle">Reisetips</h1>
-    </div>
+    <div class="am-ad--travel-tips"></div>
 
     <script>
 
         /* Kjapt og gale: Klipp og lim inn i Dr. Front */
 
+        //'http://localhost:5000/api/mushnik/ba/items/3',
+
         (function(el) {
 
-            while(el.firstChild) {
-                el.removeChild(el.firstChild);
-            };
-            
-
-            var url = 'http://mushnik.nystad.net/api/mushnik/ba/items/3',
+            var url = 'http://reisetips.nettavisen.no/feed/',
                 fragment = document.createDocumentFragment(),
                 xhr = new XMLHttpRequest();
 
@@ -43,7 +38,9 @@
 
             xhr.onload = function() {
 
-                JSON.parse(this.responseText).forEach(function(article) {
+                console.log(this);
+
+                /*JSON.parse(this.responseText).forEach(function(article) {
 
                     console.log(article);
 
@@ -73,7 +70,7 @@
 
                 });
 
-                el.appendChild(fragment);
+                el.appendChild(fragment);*/
 
             };
 
@@ -84,8 +81,6 @@
             setTimeout(function() {
                 xhr.send();
             }, 0);
-
-
 
         }(document.querySelector('.am-ad--travel-tips')));
 
