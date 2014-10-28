@@ -9,5 +9,5 @@ gulp.task('browsersync', function() {
         }
     });
 
-    gulp.watch(['demo/*.html', 'demo/*.js', 'demo/*.css'], reload);
+    gulp.watch(['demo/**/*'], reload);
 });
