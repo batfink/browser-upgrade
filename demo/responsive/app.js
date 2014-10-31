@@ -78,14 +78,18 @@ api.TravelTipDeck = function TravelTipDeck(config) {
 
         articles.forEach(function(article) {
 
-            var articleElement = document.createElement('article');
+            var container = document.createElement('div');
+            container.classList.add('am-adContainer');
+            container.classList.add('am-ad--travel-tip');
+
+            var ad = document.createElement('article');
 
             var link = document.createElement('a');
 
             var title = document.createElement('h1');
             var img = document.createElement('img');
 
-            articleElement.classList.add('am-ad-item');
+            ad.classList.add('am-ad-item');
 
             img.setAttribute('src', 'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAxJREFUCB1jYCAZAAAAMwABFXv3/gAAAABJRU5ErkJggg==');
             img.setAttribute('style', 'background-image:url(' + article.img + '); background-position: 50% 0; background-size: cover');
@@ -107,9 +111,11 @@ api.TravelTipDeck = function TravelTipDeck(config) {
             link.appendChild(title);
 
 
-            articleElement.appendChild(link);
+            ad.appendChild(link);
 
-            fragment.appendChild(articleElement);
+            container.appendChild(ad);
+
+            fragment.appendChild(container);
 
         });
 

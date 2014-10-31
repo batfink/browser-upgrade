@@ -16,14 +16,22 @@
     "url": "https://github.com/amedia/reisetips/issues"
   },
   "devDependencies": {
-    "gulp": "~3.8.8",
-    "request": "~2.45.0",
-    "xml2js": "~0.4.4",
-    "js-beautify": "~1.5.4",
-    "es6-promise": "~2.0.0",
-    "gulp-concat": "~2.4.1",
-    "require-dir": "~0.1.0",
+    "amedia-assets-arena": "^0.5.10",
     "browser-sync": "~1.5.8",
-    "run-sequence": "~1.0.1"
+    "css": "~2.1.0",
+    "es6-promise": "~2.0.0",
+    "gulp": "~3.8.8",
+    "gulp-concat": "~2.4.1",
+    "js-beautify": "~1.5.4",
+    "less": "^2.0.0-b2",
+    "less-plugin-npm-import": "^1.0.2",
+    "npm-css": "^0.2.3",
+    "request": "~2.45.0",
+    "require-dir": "~0.1.0",
+    "rework": "~1.0.1",
+    "rework-inherit": "~0.2.3",
+    "rework-npm": "~1.0.0",
+    "run-sequence": "~1.0.1",
+    "xml2js": "~0.4.4"
   }
 }
