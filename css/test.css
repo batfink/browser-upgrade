@@ -1,0 +1,25 @@
+.test {
+  color: #222222;
+}
+.test {
+  font-size: 1.25rem;
+  line-height: 24px;
+  margin: 0;
+  position: relative;
+  border-bottom: 1px solid #aaaaaa;
+  padding: 12px 12px 11px 12px;
+}
+@media screen and (min-width: 481px) {
+  .test {
+    font-size: 1.437523rem;
+    line-height: 24px;
+    padding: 9px 0 8px 0;
+  }
+}
+.test {
+  font-family: 'gsb', helvetica, arial, sans-serif;
+}
+.test {
+  background: orange;
+  width: 3;
+}
