@@ -19,7 +19,7 @@
     "amedia-assets-arena": "^0.5.10",
     "browser-sync": "~1.5.8",
     "css": "~2.1.0",
-    "es6-promise": "~2.0.0",
+    "es6-promise": "^2.0.0",
     "gulp": "~3.8.8",
     "gulp-concat": "~2.4.1",
     "js-beautify": "~1.5.4",
