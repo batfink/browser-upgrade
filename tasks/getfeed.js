@@ -76,7 +76,7 @@ function saveJSON(data) {
 gulp.task('get:feed', function () {
     return getFeed()
         .then(saveXML)
-        .then(convertToJSON)
+        .then(convertToJSON)        
         .then(get3LatestArticles)
         .then(saveJSON)
         .then(console.log.bind(console));

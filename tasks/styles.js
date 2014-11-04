@@ -2,9 +2,6 @@ var gulp = require('gulp');
 var less = require('less');
 var lessNpmImport = require('less-plugin-npm-import');
 var fs = require('fs');
-// var Promise = require('es6-promise').Promise;
-
-var lessFile = 'css/test.less';
 
 function readFile(filename) {
     return new Promise(function(resolve, reject) {
@@ -18,9 +15,9 @@ function readFile(filename) {
     });
 };
 
-function writeFile(content) {
+function writeFile(filename, content) {
     return new Promise(function(resolve, reject) {
-        fs.writeFile(lessFile.replace('.less', '.css'), content, function(error) {
+        fs.writeFile(filename.replace('.less', '.css'), content, function(error) {
             if (error) {
                 reject(error);
             } else {
@@ -45,8 +42,11 @@ function handleError(error) {
 };
 
 gulp.task('styles', function() {
+
+    var lessFile = 'css/styles.less';
+
     return readFile(lessFile)
         .then(renderLess)
-        .then(writeFile)
+        .then(writeFile.bind(undefined, lessFile))
         .catch(handleError);
 });
