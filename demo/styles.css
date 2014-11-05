@@ -1,22 +1,22 @@
-.amc-traveltip {
+.amc-traveltip-item {
   *zoom: 1;
 }
-.amc-traveltip::before,
-.amc-traveltip::after {
+.amc-traveltip-item::before,
+.amc-traveltip-item::after {
   display: table;
   content: " ";
 }
-.amc-traveltip::after {
+.amc-traveltip-item::after {
   clear: both;
 }
-.amc-traveltip {
+.amc-traveltip-item {
   margin: 24px 0px 24px 0px;
   padding: 0 12px 12px 12px;
   position: relative;
   background-color: #ffffff;
   box-shadow: 0 1px 0 0 #E3E3E3;
 }
-.amc-traveltip::before {
+.amc-traveltip-item::before {
   font-size: 10px;
   font-weight: 700;
   color: #999;
@@ -31,7 +31,7 @@
   display: table;
   width: 100%;
 }
-.amc-traveltip {
+.amc-traveltip-item {
   display: table-cell;
   vertical-align: top;
   box-sizing: border-box;

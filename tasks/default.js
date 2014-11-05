@@ -1,9 +1,10 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
+var uglify = require('gulp-uglify');
 
 gulp.task('copy:dist', function () {
     // this task will eventually uglify the js
-    return gulp.src('./lib/*.js').pipe(gulp.dest('./dist'))
+    return gulp.src('./lib/*.js').pipe(uglify()).pipe(gulp.dest('./dist'))
 });
 
 gulp.task('copy:demo', function () {

@@ -4,8 +4,6 @@ var feed = 'http://reisetips.nettavisen.no/feed/';
 var fs = require('fs');
 var parseString = require('xml2js').parseString;
 var beautify = require('js-beautify').js_beautify
-var Promise = require('es6-promise').Promise;
-var concat = require('gulp-concat');
 
 function getFeed() {
     return new Promise(function getFeed(resolve, reject) {
@@ -76,7 +74,7 @@ function saveJSON(data) {
 gulp.task('get:feed', function () {
     return getFeed()
         .then(saveXML)
-        .then(convertToJSON)        
+        .then(convertToJSON)
         .then(get3LatestArticles)
         .then(saveJSON)
         .then(console.log.bind(console));
