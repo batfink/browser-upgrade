@@ -48,10 +48,13 @@ function get3LatestArticles(data) {
     var arr = [];
 
     articles.forEach(function (article) {
+
+        var img = article.enclosure === undefined ? undefined : article.enclosure[0].$.url;
+
         arr.push({
             title : article.title[0],
             link : article.link[0],
-            img : article.enclosure[0].$.url
+            img : img
         });
     });
 
