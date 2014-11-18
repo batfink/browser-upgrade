@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reisetips</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <!-- Start: Klipp og lim inn i Dr. Front -->
+
+    <div class="am-ad--travel-tips">
+        <h1 class="df-style-maintitle">Reisetips</h1>
+    </div>
+
+    <script>
+
+
+
+        (function(el) {
+
+            while(el.firstChild) {
+                el.removeChild(el.firstChild);
+            };
+
+
+            var url = 'http://mushnik.nystad.net/api/mushnik/ba/items/3',
+                fragment = document.createDocumentFragment(),
+                xhr = new XMLHttpRequest();
+
+            if ('withCredentials' in xhr) {
+                xhr.open('GET', url, true);
+            } else if (typeof XDomainRequest != 'undefined') {
+                xhr = new XDomainRequest();
+                xhr.open('GET', url)
+            } else {
+                xhr = null;
+            };
+
+            if (!xhr) {
+                return;
+            };
+
+            xhr.onload = function() {
+
+                JSON.parse(this.responseText).forEach(function(article) {
+
+                    console.log(article);
+
+                    var articleElement = document.createElement('article'),
+                        link = document.createElement('a'),
+                        title = document.createElement('h1'),
+                        img = document.createElement('img');
+
+                    articleElement.setAttribute('class', 'am-ad--travel-tip');
+                    title.setAttribute('class', 'am-ad--travel-tip-title');
+
+                    img.setAttribute('src', 'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAxJREFUCB1jYCAZAAAAMwABFXv3/gAAAABJRU5ErkJggg==');
+                    img.setAttribute('style', 'background-image:url(' + article.img + ')');
+
+                    img.setAttribute('class', 'am-ad--travel-tip-image');
+                    link.setAttribute('href', article.link);
+                    link.setAttribute('class', 'am-ad--travel-tip-link');
+
+                    title.appendChild(document.createTextNode(article.title));
+
+                    link.appendChild(img);
+                    link.appendChild(title);
+
+                    articleElement.appendChild(link);
+
+                    fragment.appendChild(articleElement);
+
+                });
+
+                el.appendChild(fragment);
+
+            };
+
+            xhr.onerror = function() {};
+            xhr.ontimeout = function() {};
+            xhr.onprogress = function() {};
+
+            setTimeout(function() {
+                xhr.send();
+            }, 0);
+
+
+
+        }(document.querySelector('.am-ad--travel-tips')));
+
+    </script>
+
+    <!-- End: Klipp og lim inn i Dr. Front -->
+
+
+</body>
+</html>

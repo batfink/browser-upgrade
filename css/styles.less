@@ -1,0 +1,47 @@
+@import (less, reference) 'npm://amedia-assets-arena/css/news.src.css';
+
+.amc-traveltip-container {
+    display: table;
+    width: 100%;
+}
+
+.amc-traveltip-item {
+    &:extend(.am-adContainer);
+    &::before:extend(.am-adContainer:before, .am-adContainer::before) {}
+    &::after:extend(.am-adContainer:after, .am-adContainer::after) {}
+    display: table-cell;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.amc-traveltip-title {
+    line-height: 1.1;
+    margin: 0;
+}
+
+.amc-traveltip-image {
+    width: 100%;
+    height: auto;
+    background-position: 50% 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.amc-traveltip-link {
+    color: black;
+    text-decoration: none;
+}
+
+@media (max-width: 420px) {
+    .amc-traveltip-container {
+        display: block;
+    }
+    .amc-traveltip {
+        display: block;
+        width: 100% !important;
+    }
+    .amc-traveltip-title {
+        font-size: 24px !important;
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "reisetips",
+  "dependencies": {
+    "es6-promise": "~1.0.0",
+    "classlist": "~2014.7.23"
+  }
+}
