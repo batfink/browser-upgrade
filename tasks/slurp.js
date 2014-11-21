@@ -37,7 +37,7 @@ function getFile(url) {
 // })
 
 
-gulp.task('slurp', function (cb) {
+gulp.task('slurp', function () {
 
     jsdom.env({
         url : 'http://www.ba.no/?ads=placeholder',
@@ -96,5 +96,5 @@ gulp.task('slurp', function (cb) {
         }
     });
 
-    cb();
+    
 });
