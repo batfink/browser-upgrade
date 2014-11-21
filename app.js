@@ -12,17 +12,15 @@
 
     }());
 
-    // if (ie === undefined) {
-    //     return;
-    // };
+    if (ie === undefined) {
+        return;
+    };
 
     var fragment = document.createDocumentFragment(),
 
         icon = 'iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAA3NCSVQICAjb4U/gAAAASFBMVEXTABDztbzgSVrpgIvWGyj////77e764+Xun6TVDBrbND/jW2r2yc799/fZJjHgUFrWESXcNkjwpKzphozUDx375eX77+/ztb1IMlIHAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAAJtJREFUGJV1kUsShCAMROOnCaiAivc/6wAS4mLoBfXSBbZJCFXGxuBciNa8NZXDp4eanuTF5o0+2vi1ea3lzDxXWLnYvt3NBbf7PtupPc5hpmECGUk7gENyDVmJuoFb2FIUXIBFOFIQ3IFdOJATvIBL2Kl9Aqfa/SM0TR2DRn4V9Qe/stpOn0ltpzevMynNj0Y1GOxoDaOl/VnxD6I4Bpn08IoaAAAAAElFTkSuQmCC',
 
         style = [
-                    // 'position: fixed',
-                    // 'top: 0',
                     'font-size: 14px',
                     'font-weight: bold',
                     'border-bottom: 1px solid #dadada',
@@ -40,9 +38,6 @@
                 ['a', { 'href' : 'http://www.mozilla.org/nb-NO/firefox/new/' }, 'Firefox'], ' eller ',
                 ['a', { 'href' : 'http://www.opera.com/download/' }, 'Opera'], '.'
             ];
-
-    //p.splice(2, 0, '31. desember 2014 slutter vi å støtte Internet Explorer 9. ');
-    p.splice(1, 0, 'Du bruker en nettleser vi ikke støtter. ');
 
     if (ie === 9) {
         p.splice(2, 0, '31. desember 2014 slutter vi å støtte Internet Explorer 9. ');
@@ -88,7 +83,6 @@
 
     function insertElement() {
         document.body.insertBefore(fragment, document.body.firstChild);
-        //document.body.style.marginTop = '40px';
     };
 
 
