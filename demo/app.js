@@ -1,1 +1,105 @@
-var api=api||{};api.TravelTipDeck=function(e){function t(e,t){console.error("Reisetips component failed! ",t),e.parentNode.removeChild(e)}function i(e){return new Promise(function(t,i){var n=new XMLHttpRequest;"withCredentials"in n?(n.open("GET",e,!0),t(n)):"undefined"!=typeof XDomainRequest?(n=new XDomainRequest,n.open("GET",e),t(n)):(n=null,i(Error("no xhr support")))})}function n(e){return new Promise(function(t,i){e.onload=function(){t(this.responseText)},e.onerror=function(){i(Error("transfer failed"))},e.ontimeout=function(){i(Error("timeout"))},e.onprogress=function(){},setTimeout(function(){e.send()},0)})}function r(e,t,i){var n=100/t,r=72;i.forEach(function(e){var t=document.createElement("div");t.classList.add("amc-traveltip-item"),t.setAttribute("style","width:"+n+"%");var i=document.createElement("h1");if(i.classList.add("amc-traveltip-title"),i.setAttribute("style","font-size:"+r*(n/100)+"px;"),i.appendChild(document.createTextNode(e.title)),e.img){var a=document.createElement("img");a.classList.add("amc-traveltip-image"),a.setAttribute("style","background-image:url("+e.img+")"),a.setAttribute("src","data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAxJREFUCB1jYCAZAAAAMwABFXv3/gAAAABJRU5ErkJggg==")}var s=document.createElement("a");s.classList.add("amc-traveltip-link"),s.setAttribute("href",e.link),e.img&&s.appendChild(a),s.appendChild(i);var c=document.createElement("article");c.appendChild(s),t.appendChild(c),o.appendChild(t)}),e.appendChild(o)}Object.keys(e).forEach(function(t){this[t]=e[t]}.bind(this));var a="http://services.api.no/api/mushnik/"+this.partner+"/items/"+this.items,o=document.createDocumentFragment();i(a).then(n).then(JSON.parse).then(r.bind(void 0,this.el,this.items)).catch(t.bind(void 0,this.el))};
+(function() {
+
+    var ie = (function(){
+        var undef, v = 3,div = document.createElement('div'), all = div.getElementsByTagName('i');
+
+        while (
+            div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+            all[0]
+        );
+
+        return v > 4 ? v : undef;
+
+    }());
+
+    // if (ie === undefined) {
+    //     return;
+    // };
+
+    var fragment = document.createDocumentFragment(),
+
+        icon = 'iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAA3NCSVQICAjb4U/gAAAASFBMVEXTABDztbzgSVrpgIvWGyj////77e764+Xun6TVDBrbND/jW2r2yc799/fZJjHgUFrWESXcNkjwpKzphozUDx375eX77+/ztb1IMlIHAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAAJtJREFUGJV1kUsShCAMROOnCaiAivc/6wAS4mLoBfXSBbZJCFXGxuBciNa8NZXDp4eanuTF5o0+2vi1ea3lzDxXWLnYvt3NBbf7PtupPc5hpmECGUk7gENyDVmJuoFb2FIUXIBFOFIQ3IFdOJATvIBL2Kl9Aqfa/SM0TR2DRn4V9Qe/stpOn0ltpzevMynNj0Y1GOxoDaOl/VnxD6I4Bpn08IoaAAAAAElFTkSuQmCC',
+
+        style = [
+                    // 'position: fixed',
+                    // 'top: 0',
+                    'font-size: 14px',
+                    'font-weight: bold',
+                    'border-bottom: 1px solid #dadada',
+                    'z-index: 2',
+                    'width: 100%',
+                    'position: relative',
+                    'background: #fff url(data:image/png;base64,' + icon + ') 20px 50% no-repeat'
+                ],
+
+        div = ['div', { 'style' : style.join(';')}],
+
+        p   = ['p', {'style': 'padding: 10px 20px 10px 49px'}, 'Vi anbefaler at du oppgraderer til siste versjon av ',
+                ['a', { 'href' : 'http://windows.microsoft.com/nb-NO/internet-explorer/download-ie' }, 'Internet Explorer'], ', ',
+                ['a', { 'href' : 'http://www.google.com/chrome' }, 'Chrome'], ', ',
+                ['a', { 'href' : 'http://www.mozilla.org/nb-NO/firefox/new/' }, 'Firefox'], ' eller ',
+                ['a', { 'href' : 'http://www.opera.com/download/' }, 'Opera'], '.'
+            ];
+
+    //p.splice(2, 0, '31. desember 2014 slutter vi å støtte Internet Explorer 9. ');
+    p.splice(1, 0, 'Du bruker en nettleser vi ikke støtter. ');
+
+    if (ie === 9) {
+        p.splice(2, 0, '31. desember 2014 slutter vi å støtte Internet Explorer 9. ');
+    };
+
+    if (ie < 9) {
+        p.splice(2, 0, 'Du bruker en nettleser vi ikke støtter. ');
+    };
+
+    div.push(p);
+
+    generateMarkup(fragment, div);
+
+    function generateMarkup(parent, input) {
+
+        if (input instanceof Array) {
+
+            if (typeof input[0] === 'string') {
+                var el = document.createElement(input.shift());
+                parent.appendChild(el);
+                parent = el;
+            }
+
+            for (var i = 0, len = input.length; i < len; i++) {
+                generateMarkup(parent, input[i]);
+            }
+
+        } else if (typeof input === 'string') {
+
+            var txt = document.createTextNode(input);
+            parent.appendChild(txt);
+
+        } else {
+
+            for (var attr in input) {
+                if (input.hasOwnProperty(attr)) {
+                    parent.setAttribute(attr, input[attr]);
+                }
+            }
+
+        };
+    };
+
+    function insertElement() {
+        document.body.insertBefore(fragment, document.body.firstChild);
+        //document.body.style.marginTop = '40px';
+    };
+
+
+    if (document.readyState == 'complete') {
+        insertElement();
+    } else {
+        document.onreadystatechange = function() {
+            if (document.readyState == 'complete') {
+                insertElement();
+            }
+        };
+    }
+
+}());

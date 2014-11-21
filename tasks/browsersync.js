@@ -2,12 +2,12 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
-gulp.task('browsersync', function() {
+gulp.task('browsersync', ['slurp', 'demo'], function() {
     browserSync({
         server: {
-            baseDir: './demo'
+            baseDir: 'demo'
         }
     });
 
-    gulp.watch(['demo/**/*'], reload);    
+    gulp.watch(['demo/app.js', 'demo/index.html'], reload);
 });

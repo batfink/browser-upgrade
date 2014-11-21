@@ -1,0 +1,39 @@
+#am-legacy .am-siteHeader--inverted .am-newspaper-color,
+#am-legacy .am-newspaper-color {
+  background-color: #d62727;
+}
+.am-color--brandBG,
+.am-siteHeader--inverted .am-newspaper-color,
+.am-newspaper-color {
+  background-color: #d62727;
+}
+.am-color--brand {
+  color: #d62727;
+}
+header.am-minimalist a.am-logo {
+  background-image: url("http://r.api.no/local/v3/publications/www.ba.no/gfx/small.svg");
+  height: 32px;
+  width: 100px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  background-size: contain;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 124.8dpi) {
+  header.am-minimalist a.am-logo {
+    background-image: url("http://r.api.no/local/v3/publications/www.ba.no/gfx/small.svg");
+    height: 42px;
+    width: 100px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    background-size: contain;
+  }
+}
+.am-color--brandMonoInverted {
+  color: #fff;
+}
+.am-color--brandCombo {
+  background-color: #d62727;
+  color: #fff;
+}
